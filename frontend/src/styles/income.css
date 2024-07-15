@@ -1,0 +1,13 @@
+.card {
+    color: #290661;
+}
+
+.plus {
+    color: #CED4DA;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+.table>:not(caption)>*>* {
+    color: #290661;
+}
