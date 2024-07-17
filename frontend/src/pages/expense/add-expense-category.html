@@ -10,8 +10,8 @@
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">
-    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">
+<!--    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">-->
+<!--    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">-->
     <link rel="stylesheet" href="../../styles/main.css">
 </head>
 <body>
@@ -71,12 +71,11 @@
                         <span style="color:#052C65;">Доходы & Расходы</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="rounded">
                     <ul class="list-unstyled nav-pills ps-0">
                         <li class="w-100" id="list-border">
-                            <button class="w-100 btn btn-toggle nav-link active d-inline-flex align-items-center justify-content-between collapsed"
+                            <button class="w-100 btn-toggle nav-link active d-inline-flex align-items-center justify-content-between collapsed"
                                     id="collapsed"
-                                    type="button"
                                     data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                 <span>Категории</span>
                             </button>
@@ -85,12 +84,12 @@
                                     style="border:1px solid #0d6efd;">
                                     <li class="">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none text-primary bg-body-tertiary rounded"
+                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded ms-3 mb-2 text-primary"
                                            data-name="Доход" data-page="#/income">Доходы</a>
                                     </li>
-                                    <li class="rounded-bottom">
+                                    <li class="rounded-bottom nav-link active">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none text-primary bg-body-tertiary rounded"
+                                           class="w-100 link-body-emphasis d-inline-flex text-light text-decoration-none rounded text-primary mb-0"
                                            data-name="Расход" data-page="#/expense">Расходы</a>
                                     </li>
                                 </ul>
@@ -148,9 +147,9 @@
     </div>
 </div>
 
-<script src="/../../../bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
-<script src="../../components/burger.js"></script>
+<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<!--<script src="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>-->
 
+<script src="../../components/burger.js"></script>
 </body>
 </html>

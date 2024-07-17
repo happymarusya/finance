@@ -30,7 +30,7 @@ input::placeholder {
 }
 
 .form-control.is-valid, .was-validated .form-control:valid:focus, .was-validated .form-control:valid {
-  border-color: #CED4DA;
+  /*border-color: #CED4DA;*/
   background-image: none;
 }
 

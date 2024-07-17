@@ -8,16 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">
-    <link href="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">-->
+<!--    <link href="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">-->
     <link rel="stylesheet" href="src/styles/main.css">
 </head>
 <body>
 
-<div class="d-flex">
-    <div class="sidebar border-end">
+<div class="d-flex vh-100">
+    <div class="sidebar border-end flex-shrink-0 vh-100">
         <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100">
             <header class="d-md-block">
                 <a href="javascript:void(0);" class="d-flex text-decoration-none pb-3">
@@ -84,12 +83,12 @@
                                     style="border:1px solid #0d6efd;">
                                     <li class="">
                                         <a href="javascript:void(0)"
-                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded ms-3 mb-2 text-primary"
                                            data-name="Доход" data-page="#/income">Доходы</a>
                                     </li>
                                     <li class="rounded-bottom">
                                         <a href="javascript:void(0)"
-                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded ms-3 text-primary"
                                            data-name="Расход" data-page="#/expense">Расходы</a>
                                     </li>
                                 </ul>
@@ -133,11 +132,11 @@
             <span></span>
         </div>
 
-    <div class="main-content container">
+    <div class="main-content flex-grow-1">
         <div class="content-header">
             <h1>Главная</h1>
         </div>
-        <div class="row row-cols-sm-1 row-cols-md-3 g-3 main-content-buttons d-flex">
+        <div class="gap-3 main-content-buttons d-flex flex-wrap">
             <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Сегодня</button>
             <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Неделя</button>
             <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Месяц</button>
@@ -145,32 +144,33 @@
             <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Все</button>
             <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Интервал</button>
             <div>
-                <span style="color: black">с</span>
-                <button type="button" class="btn btn-link shadow-none" style="color:#6C757D;">Дата</button>
-                <span style="color: black">по</span>
-                <button type="button" class="btn btn-link shadow-none" style="color:#6C757D;">Дата</button>
+                <span class="black">с</span>
+                <button type="button" class="btn btn-link shadow-none grey">Дата</button>
+                <span class="black">по</span>
+                <button type="button" class="btn btn-link shadow-none grey">Дата</button>
             </div>
         </div>
-        <div class="row pt-5">
-            <div class="col-lg-10 col-xxl-6">
+        <div class="d-flex w-100 pt-5 justify-content-around mx-auto diagrams">
+<!--            <div class="col-lg-10 col-xxl-6">-->
                 <div class="pt-5 d-flex flex-column">
-                    <h3 class="mb-0 text-center">Доходы</h3>
-                    <canvas class="w-100 line" id="chartIncome" style="min-width: 320px;"></canvas>
+                    <h3 class="mb-3 text-center">Доходы</h3>
+                    <canvas class="operation-chart" id="chartIncome"></canvas>
                 </div>
-            </div>
-            <div class="col-lg-10 col-xxl-6">
+            <div class="line"></div>
+<!--            </div>-->
+<!--            <div class="col-lg-10 col-xxl-6">-->
                 <div class="pt-5 d-flex flex-column">
-                    <h3 class="mb-0 text-center">Расходы</h3>
-                    <canvas class="w-100" id="chartExpense" style="min-width: 320px;"></canvas>
+                    <h3 class="mb-3 text-center">Расходы</h3>
+                    <canvas class="operation-chart" id="chartExpense"></canvas>
                 </div>
-            </div>
+<!--            </div>-->
         </div>
     </div>
 </div>
 
-<script src="../bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<!--<script src="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="src/components/chart.js"></script>
 <script src="src/components/burger.js"></script>
 

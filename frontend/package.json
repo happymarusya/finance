@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "@kurkle/color": "^0.3.2",
-    "bootstrap-icons": "^1.11.3",
-    "chart.js": "^4.4.3",
-    "luxon": "^3.4.4"
+    "bootstrap": "^5.3.3"
   }
 }

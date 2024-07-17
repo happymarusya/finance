@@ -1,10 +1,10 @@
 @import "income.css";
 
 body {
+    height: 100vh;
     margin: 0;
     font-family: "Roboto", sans-serif;
     color: #052C65;
-    text-decoration: none;
 }
 
 .open {
@@ -30,7 +30,7 @@ body {
 .burger {
     display: none;
     position: absolute;
-    top: 20px; right: 20px;
+    top: 20px; right: 40px;
     z-index: 50;
     align-items: center;
     justify-content: flex-end;
@@ -83,9 +83,9 @@ li svg {
     margin-bottom: auto;
 }
 
-.btn-toggle:hover, .btn-toggle:focus {
-    width: 100%;
-}
+/*.btn-toggle:hover, .btn-toggle:focus {*/
+/*    width: 100%;*/
+/*}*/
 
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
@@ -154,28 +154,42 @@ li svg {
 }
 
 .main-content {
-    margin-top: 100px;
+    padding: 100px 60px;
+    overflow-y: auto;
 }
 
 .main-content-buttons {
     margin-top: 50px;
-    padding-left: 12px;
+    /*padding-left: 12px;*/
 }
 
-.main-content-buttons .btn {
-    margin-right: 20px;
+.black {
+    color: black;
 }
 
-.main-content-buttons .btn-outline-secondary {
+.grey {
+    color: #6C757D;
+}
+
+/*.main-content-buttons .btn {*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*.main-content-buttons .btn-outline-secondary {*/
+/*    width: 100px;*/
+/*}*/
+
+.btn-filter {
     width: 100px;
 }
 
-.btn-filter {
-    max-height: 36px;
+.line {
+    border-right: 1px solid #D9D9D9;
+    margin-top: 100px;
 }
 
-canvas.line {
-    border-right: 1px solid #D9D9D9;
+.operation-chart {
+    width: 500px;
 }
 
 .modal-dialog {
@@ -190,8 +204,17 @@ canvas.line {
 }
 
 @media (max-width: 1400px) {
-    canvas.line {
+    .line {
         border-right: none;
+    }
+
+    .diagrams {
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .operation-chart {
+        width: auto;
     }
 }
 
