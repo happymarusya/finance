@@ -23,8 +23,6 @@ body {
 .nav-item {
     font-size: 14px;
     color: #052C65;
-    display: flex;
-    align-items: center;
 }
 
 .burger {
@@ -83,17 +81,18 @@ li svg {
     margin-bottom: auto;
 }
 
-/*.btn-toggle:hover, .btn-toggle:focus {*/
-/*    width: 100%;*/
-/*}*/
-
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
     box-shadow: none;
 }
 
+.btn-toggle-nav {
+    border:1px solid #0d6efd;
+}
+
 .btn-toggle[aria-expanded="true"]::after {
     transform: rotate(90deg);
+    /*content: url("../static/images/arrow-white.svg");*/
 }
 
 .btn-toggle::after {
@@ -129,9 +128,11 @@ li svg {
     background-color: #0d6efd;
 }
 
-.btn-toggle:focus #list-border {
-    border: 1px solid #0d6efd;
-    border-radius: 5px;
+.btn-toggle[aria-expanded="true"] {
+    /*color: white;*/
+    /*background-color: #0d6efd;*/
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
 }
 
 .btn-toggle:hover.btn-toggle::after,
@@ -160,7 +161,6 @@ li svg {
 
 .main-content-buttons {
     margin-top: 50px;
-    /*padding-left: 12px;*/
 }
 
 .black {
@@ -170,14 +170,6 @@ li svg {
 .grey {
     color: #6C757D;
 }
-
-/*.main-content-buttons .btn {*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/*.main-content-buttons .btn-outline-secondary {*/
-/*    width: 100px;*/
-/*}*/
 
 .btn-filter {
     width: 100px;
@@ -212,10 +204,6 @@ li svg {
         flex-direction: column;
         margin: auto;
     }
-
-    .operation-chart {
-        width: auto;
-    }
 }
 
 @media (max-width: 900px) {
@@ -244,6 +232,12 @@ li svg {
     @keyframes burgerAnimation {
         from {opacity: 0}
         to {opacity: 1}
+    }
+}
+
+@media (max-width: 780px) {
+    .operation-chart {
+        width: auto;
     }
 }
 
