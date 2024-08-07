@@ -10,14 +10,12 @@
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">
-    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/main.css">
 </head>
 <body>
 
 <div class="d-flex">
-    <div class="sidebar border-end">
+    <div class="sidebar border-end flex-shrink-0 vh-100">
         <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100">
             <header class="d-md-block">
                 <a href="javascript:void(0);" class="d-flex text-decoration-none pb-3">
@@ -28,20 +26,20 @@
             <ul id="sidebarMenu"
                 class="d-md-block d-flex flex-shrink-0 nav nav-pills flex-column mb-auto p-3 border-top collapse">
                 <li class="nav-item pt-4">
-                    <a href="#" class="nav-link active w-100" aria-current="page">
+                    <a href="#" class="nav-link w-100" aria-current="page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.3964V5.89644H2.5V12.3964C2.5 12.6726
                         2.72386 12.8964 3 12.8964H12C12.2761 12.8964 12.5 12.6726 12.5 12.3964V5.89644H13.5V12.3964C13.5
-                        13.2249 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2249 1.5 12.3964Z" fill="white"/>
+                        13.2249 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2249 1.5 12.3964Z" fill="#052C65"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.39644V4.89644L10.5 2.89644V1.39644C10.5
-                        1.1203 10.7239 0.89644 11 0.89644H12C12.2761 0.89644 12.5 1.1203 12.5 1.39644Z" fill="white"/>
+                        1.1203 10.7239 0.89644 11 0.89644H12C12.2761 0.89644 12.5 1.1203 12.5 1.39644Z" fill="#052C65"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 0.39644C7.18342 0.00591397 7.81658
                         0.00591606 8.20711 0.39644L14.8536 7.04289C15.0488 7.23815 15.0488 7.55473 14.8536 7.74999C14.6583
                         7.94526 14.3417 7.94526 14.1464 7.74999L7.5 1.10355L0.853553 7.74999C0.658291 7.94526 0.341709
                         7.94526 0.146447 7.74999C-0.0488155 7.55473 -0.0488155 7.23815 0.146447 7.04289L6.79289 0.39644Z"
-                                  fill="white"/>
+                                  fill="#052C65"/>
                         </svg>
-                        <span>Главная</span>
+                        <span style="color:#052C65;">Главная</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -71,28 +69,28 @@
                         <span style="color:#052C65;">Доходы & Расходы</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="rounded">
                     <ul class="list-unstyled nav-pills ps-0">
-                        <li class="w-100" id="list-border">
-                            <button class="w-100 btn btn-toggle nav-link active d-inline-flex align-items-center justify-content-between collapsed"
+                        <li class="w-100 active" id="list-border">
+                            <button class="w-100 btn-toggle rounded nav-link active d-inline-flex align-items-center justify-content-between collapsed"
                                     id="collapsed"
-                                    type="button"
                                     data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                 <span>Категории</span>
                             </button>
                             <div class="collapse show" id="home-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal small pb-1 rounded-bottom border-top-0"
-                                    style="border:1px solid #0d6efd;">
-                                    <li class="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal small rounded-bottom border-top-0 overflow-hidden">
+                                    <li class="nav-item">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none text-primary bg-body-tertiary rounded"
+                                           class="w-100 active d-inline-flex nav-link rounded-0 px-3 pb-2"
                                            data-name="Доход" data-page="#/income">Доходы</a>
                                     </li>
+                                    <!--добавляем класс active в <a>-->
                                     <li class="rounded-bottom">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none text-primary bg-body-tertiary rounded"
+                                           class="w-100 d-inline-flex nav-link rounded-0 px-3"
                                            data-name="Расход" data-page="#/expense">Расходы</a>
                                     </li>
+                                    <!-- добавляем класс active в <a>-->
                                 </ul>
                             </div>
                         </li>
@@ -130,15 +128,16 @@
             </div>
         </div>
     </div>
+
     <div class="burger">
         <span></span>
     </div>
 
-    <div class="main-content container">
+    <div class="main-content">
         <div class="content-header">
             <h1>Доходы</h1>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-3 mt-3">
+        <div class="row row-cols-1 row-cols-xs-1 row-cols-lg-2 row-cols-xl-3 g-3 mt-3">
             <div class="col">
                 <div class="card h-100 rounded-4">
                     <div class="card-body">
@@ -186,8 +185,7 @@
     </div>
 </div>
 
-<script src="/../../../bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="../../components/burger.js"></script>
 
 </body>

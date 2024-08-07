@@ -10,18 +10,16 @@
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">
-    <link href="../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
 <div class="d-flex">
-    <div class="sidebar border-end">
+    <div class="sidebar border-end flex-shrink-0 vh-100">
         <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100">
             <header class="d-md-block">
                 <a href="javascript:void(0);" class="d-flex text-decoration-none pb-3">
-                    <img src="../static/images/logo.png" alt="Logo" class="logo">
+                    <img src="../../src/static/images/logo.png" alt="Logo" class="logo">
                 </a>
 
             </header>
@@ -45,12 +43,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link w-100">
+                    <a href="#" class="nav-link active w-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086
                         13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16
                          11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z"
-                                  fill="#052C65"/>
+                                  fill="white"/>
                             <path d="M9.4375 11.9444C9.48519 12.5403 9.95568 13.0049 10.8013 13.0599V13.5H11.1764V13.0568C12.0507
                         12.9957 12.5625 12.5281 12.5625 11.8496C12.5625 11.2323 12.1715 10.9144 11.4721 10.7494L11.1764
                         10.6791V9.48105C11.5516 9.52384 11.79 9.72861 11.8472 10.0128H12.5053C12.4576 9.43826 11.9648
@@ -59,40 +57,40 @@
                         10.1051 11.9444H9.4375ZM10.7981 10.5905C10.4294 10.5049 10.2291 10.3307 10.2291 10.0678C10.2291
                         9.77445 10.4453 9.5544 10.8013 9.49022V10.5905H10.7981ZM11.2305 11.3362C11.6787 11.4401 11.8854
                         11.6082 11.8854 11.9046C11.8854 12.2439 11.6279 12.4762 11.1764 12.5189V11.324L11.2305 11.3362Z"
-                                  fill="#052C65"/>
+                                  fill="white"/>
                             <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585
                         5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457
                         13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z"
-                                  fill="#052C65"/>
+                                  fill="white"/>
                             <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6
                         3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983
-                        5.08325Z" fill="#052C65"/>
+                        5.08325Z" fill="white"/>
                         </svg>
-                        <span style="color:#052C65;">Доходы & Расходы</span>
+                        <span>Доходы & Расходы</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="rounded">
                     <ul class="list-unstyled nav-pills ps-0">
                         <li class="w-100" id="list-border">
-                            <button class="w-100 btn btn-toggle nav-link active d-inline-flex align-items-center justify-content-between collapsed"
+                            <button class="w-100 btn-toggle rounded d-inline-flex align-items-center justify-content-between collapsed"
                                     id="collapsed"
-                                    type="button"
                                     data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                 <span>Категории</span>
                             </button>
-                            <div class="collapse show" id="home-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal small pb-1 rounded-bottom border-top-0"
-                                    style="border:1px solid #0d6efd;">
-                                    <li class="">
+                            <div class="collapse" id="home-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal small rounded-bottom border-top-0 overflow-hidden">
+                                    <li class="nav-item">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none bg-body-tertiary text-primary rounded-bottom"
+                                           class="w-100 d-inline-flex nav-link rounded-0 px-3 pb-2"
                                            data-name="Доход" data-page="#/income">Доходы</a>
                                     </li>
+                                    <!--добавляем класс active в <a>-->
                                     <li class="rounded-bottom">
                                         <a href="javascript:void(0)"
-                                           class="link-body-emphasis d-inline-flex text-decoration-none text-primary bg-body-tertiary rounded"
+                                           class="w-100 d-inline-flex nav-link rounded-0 px-3"
                                            data-name="Расход" data-page="#/expense">Расходы</a>
                                     </li>
+                                    <!-- добавляем класс active в <a>-->
                                 </ul>
                             </div>
                         </li>
@@ -130,16 +128,17 @@
             </div>
         </div>
     </div>
+
     <div class="burger">
         <span></span>
     </div>
 
-    <div class="main-content container">
+    <div class="main-content">
         <div class="content-header">
             <h1>Редактирование дохода/расхода</h1>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
-            <div class="col">
+<!--        <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">-->
+            <form class="mt-4">
                 <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Доход" aria-label="Type">
                 <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Зарплата" aria-label="Category">
                 <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="500$" aria-label="Amount">
@@ -147,14 +146,13 @@
                 <input type="text" class="form-control mb-4 pt-2 text-start-secondary" placeholder="Комментарий..." aria-label="Comments">
                 <a href="javascript:void(0);" class="btn btn-success me-2">Сохранить</a>
                 <a href="javascript:void(0);" class="btn btn-danger">Отмена</a>
-            </div>
-        </div>
+            </form>
+<!--        </div>-->
     </div>
 </div>
 
-<script src="/../../../bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
-<script src="/../components/burger.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="../components/burger.js"></script>
 
 </body>
 </html>

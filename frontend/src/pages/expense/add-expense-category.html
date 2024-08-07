@@ -10,14 +10,12 @@
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!--    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet">-->
-<!--    <link href="../../../../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet">-->
     <link rel="stylesheet" href="../../styles/main.css">
 </head>
 <body>
 
 <div class="d-flex">
-    <div class="sidebar border-end">
+    <div class="sidebar border-end flex-shrink-0 vh-100">
         <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100">
             <header class="d-md-block">
                 <a href="javascript:void(0);" class="d-flex text-decoration-none pb-3">
@@ -73,25 +71,26 @@
                 </li>
                 <li class="rounded">
                     <ul class="list-unstyled nav-pills ps-0">
-                        <li class="w-100" id="list-border">
-                            <button class="w-100 btn-toggle nav-link active d-inline-flex align-items-center justify-content-between collapsed"
+                        <li class="w-100 active" id="list-border">
+                            <button class="w-100 btn-toggle rounded nav-link active d-inline-flex align-items-center justify-content-between collapsed"
                                     id="collapsed"
                                     data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                 <span>Категории</span>
                             </button>
                             <div class="collapse show" id="home-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal small pb-1 rounded-bottom border-top-0"
-                                    style="border:1px solid #0d6efd;">
-                                    <li class="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal small rounded-bottom border-top-0 overflow-hidden">
+                                    <li class="nav-item">
                                         <a href="javascript:void(0)"
-                                           class="w-100 link-body-emphasis d-inline-flex text-decoration-none rounded ms-3 mb-2 text-primary"
+                                           class="w-100 d-inline-flex nav-link rounded-0 px-3 pb-2"
                                            data-name="Доход" data-page="#/income">Доходы</a>
                                     </li>
-                                    <li class="rounded-bottom nav-link active">
+                                    <!--добавляем класс active в <a>-->
+                                    <li class="rounded-bottom">
                                         <a href="javascript:void(0)"
-                                           class="w-100 link-body-emphasis d-inline-flex text-light text-decoration-none rounded text-primary mb-0"
+                                           class="w-100 d-inline-flex nav-link active rounded-0 px-3"
                                            data-name="Расход" data-page="#/expense">Расходы</a>
                                     </li>
+                                    <!-- добавляем класс active в <a>-->
                                 </ul>
                             </div>
                         </li>
@@ -133,23 +132,21 @@
         <span></span>
     </div>
 
-    <div class="main-content container">
+    <div class="main-content">
         <div class="content-header">
             <h1>Создание категории расходов</h1>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
-            <div class="col">
-                <input type="text" class="form-control mb-4 pt-2" placeholder="Название..." aria-label="Name of expense">
-                <a href="javascript:void(0);" class="btn btn-success me-2">Создать</a>
-                <a href="javascript:void(0);" class="btn btn-danger">Отмена</a>
-            </div>
-        </div>
+        <form class="mt-4">
+            <input type="text" class="form-control mb-4 pt-2" placeholder="Название..." aria-label="Name of expense">
+            <a href="javascript:void(0);" class="btn btn-success me-2">Создать</a>
+            <a href="javascript:void(0);" class="btn btn-danger">Отмена</a>
+        </form>
     </div>
 </div>
 
-<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<!--<script src="../bootstrap-5.0.2-dist/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>-->
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 <script src="../../components/burger.js"></script>
 </body>
 </html>

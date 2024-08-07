@@ -7,6 +7,10 @@ body {
     color: #052C65;
 }
 
+form {
+    width: 400px;
+}
+
 .open {
     display: flex !important;
 }
@@ -238,6 +242,24 @@ li svg {
 @media (max-width: 780px) {
     .operation-chart {
         width: auto;
+    }
+}
+
+@media (max-width: 730px) {
+    .main-content-tab {
+        padding: 100px 20px;
+    }
+}
+
+@media (max-width: 470px) {
+    form {
+        width: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .main-content {
+        padding: 100px 20px;
     }
 }
 
