@@ -1,3 +1,4 @@
+@import "login.css";
 @import "income.css";
 
 body {
@@ -149,9 +150,16 @@ li svg {
 }
 
 .balance {
-    margin-left: 20px;
     font-size: 14px;
     font-weight: bolder;
+}
+
+.dropup .dropdown-toggle::after {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 #profile-name {

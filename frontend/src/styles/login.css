@@ -1,16 +1,15 @@
-html,
-body {
-  height: 100%;
-}
+/*html,*/
+/*body {*/
+/*  height: 100%;*/
+/*}*/
 
-body {
+.login,
+.sign-up {
+  height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-
-/*form {*/
-/*  width: 400px;*/
-/*}*/
 
 input::placeholder {
   font-size: 15px;
