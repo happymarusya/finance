@@ -1,0 +1,31 @@
+<div class="main-content flex-grow-1">
+    <div class="content-header">
+        <h1>Главная</h1>
+    </div>
+    <div class="gap-3 main-content-buttons d-flex flex-wrap">
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Сегодня</button>
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Неделя</button>
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Месяц</button>
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Год</button>
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Все</button>
+        <button class="btn btn-filter btn-outline-secondary shadow-none" type="button">Интервал</button>
+        <div>
+            <span class="black">с</span>
+            <button type="button" class="btn btn-link shadow-none grey">Дата</button>
+            <span class="black">по</span>
+            <button type="button" class="btn btn-link shadow-none grey">Дата</button>
+        </div>
+    </div>
+    <div class="d-flex w-100 pt-5 justify-content-around mx-auto diagrams">
+        <div class="pt-5 d-flex flex-column operation-chart">
+            <h3 class="mb-3 text-center">Доходы</h3>
+            <canvas id="chartIncome"></canvas>
+        </div>
+        <div class="line"></div>
+        <div class="pt-5 d-flex flex-column operation-chart">
+            <h3 class="mb-3 text-center">Расходы</h3>
+            <canvas id="chartExpense"></canvas>
+        </div>
+    </div>
+</div>
+
