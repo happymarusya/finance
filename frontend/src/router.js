@@ -11,6 +11,7 @@ import {EditIncome} from "./components/income/edit-income.js";
 import {IncomeExpense} from "./components/income-expense/income-expense.js";
 import {AddIncomeExpense} from "./components/income-expense/add-income-expense.js";
 import {EditIncomeExpense} from "./components/income-expense/edit-income-expense.js";
+import {Burger} from "./components/burger";
 
 export class Router {
     constructor() {
@@ -27,6 +28,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Main();
+                    new Burger();
                 }
             },
             {
@@ -78,6 +80,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Expense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -87,6 +90,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new AddExpense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -96,6 +100,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new EditExpense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -105,6 +110,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Income(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -114,6 +120,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new AddIncome(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -123,6 +130,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new EditIncome(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -132,6 +140,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new IncomeExpense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -141,6 +150,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new AddIncomeExpense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
             {
@@ -150,6 +160,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new EditIncomeExpense(this.openNewRoute.bind(this));
+                    new Burger();
                 },
             },
         ]

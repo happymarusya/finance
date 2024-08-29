@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 module.exports = {
     entry: './src/app.js',
@@ -21,10 +22,30 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
-            },
-        ],
+                test: /\.(css)$/,
+                use: [
+                    {
+                        // Adds CSS to the DOM by injecting a `<style>` tag
+                        loader: 'style-loader'
+                    },
+                    {
+                        // Interprets `@import` and `url()` like `import/require()` and will resolve them
+                        loader: 'css-loader'
+                    },
+                    {
+                        // Loader for webpack to process CSS with PostCSS
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    autoprefixer
+                                ]
+                            }
+                        }
+                    },
+                ]
+            }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -32,11 +53,9 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [
-                { from: "./src/templates", to: "templates" },
-                { from: "./src/static/images", to: "images" },
-                { from: "./bootstrap-5.3.3-dist/css/bootstrap.min.css" , to: "css" },
-                { from: "./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" , to: "js" },
-                { from: "./src/components/burger.js", to: "js" },
+                {from: "./src/templates", to: "templates"},
+                {from: "./src/static/images", to: "images"},
+                {from: "./src/components/burger.js", to: "js"},
             ],
         }),
     ]

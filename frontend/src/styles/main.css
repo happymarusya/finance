@@ -20,6 +20,12 @@ form {
     min-width: 219px;
 }
 
+.side-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
 .logo {
     margin-left: 50px;
     margin-top: 40px;
@@ -32,8 +38,8 @@ form {
 
 .burger {
     display: none;
-    position: absolute;
-    top: 20px; right: 40px;
+    position: fixed;
+    top: 20px; right: 80px;
     z-index: 50;
     align-items: center;
     justify-content: flex-end;
@@ -221,6 +227,12 @@ li svg {
 @media (max-width: 900px) {
     .menu-opened {
         overflow-y: hidden;
+    }
+
+    .side-menu {
+        position: unset;
+        top: unset;
+        bottom: unset;
     }
 
     .burger {

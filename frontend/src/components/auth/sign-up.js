@@ -1,19 +1,15 @@
 import {AuthUtils} from "../../../utils/auth-utils";
 import {HttpUtils} from "../../../utils/http-utils";
+import {AuthBase} from "./auth-base";
 
-export class SignUp {
+export class SignUp extends AuthBase {
     constructor(openNewRoute) {
+        super();
         this.openNewRoute = openNewRoute;
 
         if (AuthUtils.getAuthInfo('accessToken')) {
             return this.openNewRoute('/');
         }
-
-        this.nameElement = document.getElementById('name');
-        this.emailElement = document.getElementById('email');
-        this.passwordElement = document.getElementById('password');
-        this.passwordRepeatElement = document.getElementById('password-repeat');
-        this.commonErrorElement = document.getElementById('common-error');
 
         document.getElementById('process-button').addEventListener('click', this.signUp.bind(this));
     }
@@ -65,7 +61,8 @@ export class SignUp {
             }
             console.log(result);
 
-            this.openNewRoute('/login');
+            super.login().then();
+            this.openNewRoute('/');
         }
     }
 }
