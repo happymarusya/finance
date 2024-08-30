@@ -12,6 +12,7 @@ import {IncomeExpense} from "./components/income-expense/income-expense.js";
 import {AddIncomeExpense} from "./components/income-expense/add-income-expense.js";
 import {EditIncomeExpense} from "./components/income-expense/edit-income-expense.js";
 import {Burger} from "./components/burger";
+import {CheckAccessToken} from "./services/check-access-token";
 
 export class Router {
     constructor() {
@@ -27,6 +28,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new Main();
                     new Burger();
                 }
@@ -64,6 +66,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/auth/sign-up.html',
                 useLayout: false,
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new SignUp(this.openNewRoute.bind(this));
                 },
             },
@@ -79,6 +82,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/expense/expense.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new Expense(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -89,6 +93,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/expense/add-expense-category.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddExpense(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -99,6 +104,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/expense/edit-expense-category.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditExpense(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -109,6 +115,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income/income.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new Income(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -119,6 +126,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income/add-income-category.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddIncome(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -129,6 +137,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income/edit-income-category.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditIncome(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -139,6 +148,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income-expense/income-expense.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new IncomeExpense(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -149,6 +159,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income-expense/add-income-expense.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddIncomeExpense(this.openNewRoute.bind(this));
                     new Burger();
                 },
@@ -159,6 +170,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income-expense/edit-income-expense.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditIncomeExpense(this.openNewRoute.bind(this));
                     new Burger();
                 },

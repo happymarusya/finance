@@ -1,5 +1,5 @@
-import {AuthUtils} from "../../../utils/auth-utils";
-import {HttpUtils} from "../../../utils/http-utils";
+import {AuthUtils} from "../../utils/auth-utils";
+import {HttpUtils} from "../../utils/http-utils";
 import {AuthBase} from "./auth-base";
 
 export class SignUp extends AuthBase {
@@ -61,8 +61,9 @@ export class SignUp extends AuthBase {
             }
             console.log(result);
 
-            super.login().then();
-            this.openNewRoute('/');
+            super.login().then(() => {
+                this.openNewRoute('/')
+            });
         }
     }
 }

@@ -1,11 +1,13 @@
 import Chart from 'chart.js/auto';
+import {AuthUtils} from "../utils/auth-utils";
 
 export class Main {
 
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
-        console.log('Главная');
+        // console.log('Главная');
         this.init();
+        document.getElementById('profile-name').innerText = JSON.parse(AuthUtils.getAuthInfo('userInfo')).name;
     }
 
     init() {

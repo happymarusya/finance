@@ -1,4 +1,4 @@
-import config from "../src/config/config";
+import config from "../config/config";
 
 export class HttpUtils {
     static async request(url, method = 'GET', body = null) {
