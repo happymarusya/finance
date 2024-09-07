@@ -9,13 +9,12 @@ export class AuthBase {
         this.passwordRepeatElement = document.getElementById('password-repeat');
         this.rememberMeElement = document.getElementById('remember-me');
         this.commonErrorElement = document.getElementById('common-error');
-        // this.profileNameElement = document.getElementById('profile-name');
     }
 
     async login() {
         this.commonErrorElement.style.display = 'none';
 
-        const result = await HttpUtils.request('/login', 'POST', {
+        const result = await HttpUtils.request('/login', 'POST', false, {
             email: this.emailElement.value,   //test@itlogia.ru
             password: this.passwordElement.value,   //12345678Qq
             rememberMe: this.rememberMeElement ? this.rememberMeElement.checked : true
@@ -23,15 +22,23 @@ export class AuthBase {
 
         if (result.error || !result.response || (result.response && (!result.response.tokens.accessToken || !result.response.tokens.refreshToken || !result.response.user.name || !result.response.user.lastName || !result.response.user.id))) {
             this.commonErrorElement.style.display = 'block';
-            return;
+            return
         }
-        console.log(result);
-        // console.log(result.response.user.name + ' ' + result.response.user.lastName);
-        // this.profileNameElement.innerText = result.response.user.name + ' ' + result.response.user.lastName;
 
         AuthUtils.setAuthInfo(result.response.tokens.accessToken, result.response.tokens.refreshToken, {
             id: result.response.user.id,
             name: result.response.user.name + ' ' + result.response.user.lastName
         })
+
+        this.receiveBalance().then();
+    }
+
+    async receiveBalance() {
+        const balance = await HttpUtils.request('/balance');
+        if (balance.error || !balance.response) {
+            alert('Невозможно получить данные о балансе')
+        }
+        AuthUtils.setUserBalanceInfo(balance.response.balance);
+        // console.log(balance.response.balance)
     }
 }

@@ -11,7 +11,7 @@ import {EditIncome} from "./components/income/edit-income.js";
 import {IncomeExpense} from "./components/income-expense/income-expense.js";
 import {AddIncomeExpense} from "./components/income-expense/add-income-expense.js";
 import {EditIncomeExpense} from "./components/income-expense/edit-income-expense.js";
-import {Burger} from "./components/burger";
+import {Sidebar} from "./components/sidebar";
 import {CheckAccessToken} from "./services/check-access-token";
 
 export class Router {
@@ -30,7 +30,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new Main();
-                    new Burger();
+                    new Sidebar();
                 }
             },
             {
@@ -66,7 +66,6 @@ export class Router {
                 filePathTemplate: '/templates/pages/auth/sign-up.html',
                 useLayout: false,
                 load: () => {
-                    new CheckAccessToken(this.openNewRoute.bind(this));
                     new SignUp(this.openNewRoute.bind(this));
                 },
             },
@@ -84,7 +83,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new Expense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -95,7 +94,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddExpense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -106,7 +105,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditExpense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -117,7 +116,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new Income(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -128,7 +127,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddIncome(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -139,7 +138,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditIncome(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -150,7 +149,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new IncomeExpense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -161,7 +160,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new AddIncomeExpense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
             {
@@ -172,7 +171,7 @@ export class Router {
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditIncomeExpense(this.openNewRoute.bind(this));
-                    new Burger();
+                    new Sidebar();
                 },
             },
         ]
@@ -212,7 +211,7 @@ export class Router {
     async activateRoute(e, oldRoute = null) {
         if (oldRoute) {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
-            console.log(currentRoute);
+            // console.log(currentRoute);
         }
 
         const urlRoute = window.location.pathname;
@@ -231,6 +230,8 @@ export class Router {
                     contentBlock = document.getElementById('content-layout');
                 }
 
+                this.activateMenuItem(newRoute);
+
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then
                 (response => response.text());
             }
@@ -239,5 +240,22 @@ export class Router {
                 newRoute.load();
             }
         }
+    }
+
+    activateMenuItem(route) {
+        const categoryMenu = document.getElementById('home-collapse');
+        const categoryButton = document.getElementById('collapsed');
+
+        let currentLink = window.location.pathname;
+        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+            let linkHref = item.getAttribute('href');
+            if (currentLink === linkHref) {
+                item.classList.add('active');
+                if ((route.route === '/income' && window.location.pathname === '/income') || (route.route === '/expense' && window.location.pathname === '/expense')) {
+                    categoryMenu.classList.add('show');
+                    categoryButton.classList.remove('collapsed');
+                }
+            }
+        })
     }
 }

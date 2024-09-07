@@ -1,6 +1,6 @@
 <div class="d-flex vh-100">
     <div class="sidebar flex-shrink-0 vh-100">
-        <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100 side-menu border-end">
+        <div class="sticky-top d-flex flex-column flex-shrink-0 vh-100 side-menu">
             <header class="d-md-block">
                 <a href="javascript:void(0);" class="d-flex text-decoration-none pb-3">
                     <img src="/images/logo.png" alt="Logo" class="logo">
@@ -10,18 +10,18 @@
             <ul id="sidebarMenu"
                 class="d-md-block d-flex flex-shrink-0 nav nav-pills flex-column mb-auto p-3 border-top collapse">
                 <li class="nav-item pt-4">
-                    <a href="/" class="nav-link active w-100" aria-current="page">
+                    <a href="/" class="nav-link w-100" aria-current="page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.3964V5.89644H2.5V12.3964C2.5 12.6726
                         2.72386 12.8964 3 12.8964H12C12.2761 12.8964 12.5 12.6726 12.5 12.3964V5.89644H13.5V12.3964C13.5
-                        13.2249 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2249 1.5 12.3964Z" fill="white"/>
+                        13.2249 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2249 1.5 12.3964Z" fill="#052C65"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.39644V4.89644L10.5 2.89644V1.39644C10.5
-                        1.1203 10.7239 0.89644 11 0.89644H12C12.2761 0.89644 12.5 1.1203 12.5 1.39644Z" fill="white"/>
+                        1.1203 10.7239 0.89644 11 0.89644H12C12.2761 0.89644 12.5 1.1203 12.5 1.39644Z" fill="#052C65"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 0.39644C7.18342 0.00591397 7.81658
                         0.00591606 8.20711 0.39644L14.8536 7.04289C15.0488 7.23815 15.0488 7.55473 14.8536 7.74999C14.6583
                         7.94526 14.3417 7.94526 14.1464 7.74999L7.5 1.10355L0.853553 7.74999C0.658291 7.94526 0.341709
                         7.94526 0.146447 7.74999C-0.0488155 7.55473 -0.0488155 7.23815 0.146447 7.04289L6.79289 0.39644Z"
-                                  fill="white"/>
+                                  fill="#052C65"/>
                         </svg>
                         <span>Главная</span>
                     </a>
@@ -50,7 +50,7 @@
                         3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983
                         5.08325Z" fill="#052C65"/>
                         </svg>
-                        <span style="color:#052C65;">Доходы & Расходы</span>
+                        <span>Доходы & Расходы</span>
                     </a>
                 </li>
                 <li class="rounded">
@@ -83,7 +83,7 @@
             </ul>
 
             <div class="balance p-3">
-                <p class="m-0">Баланс: <span class="text-primary">500</span><span class="text-primary">$</span></p>
+                <p class="m-0">Баланс: <span id="balance" class="text-primary"></span><span class="text-primary"> $</span></p>
             </div>
             <div class="border-top">
                 <div class="d-flex align-items-center pt-3 pb-4 ps-3">

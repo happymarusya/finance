@@ -55,7 +55,7 @@ module.exports = {
             patterns: [
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/static/images", to: "images"},
-                {from: "./src/components/burger.js", to: "js"},
+                {from: "./src/components/sidebar.js", to: "js"},
             ],
         }),
     ]

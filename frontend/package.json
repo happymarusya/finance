@@ -2,7 +2,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.4"
+    "chart.js": "^4.4.4",
+    "jsonwebtoken": "^9.0.2"
   },
   "name": "frontend",
   "version": "1.0.0",

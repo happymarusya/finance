@@ -1,5 +1,4 @@
 import {AuthBase} from "./auth-base";
-import {AuthUtils} from "../../utils/auth-utils";
 
 export class Login extends AuthBase {
 
@@ -27,10 +26,12 @@ export class Login extends AuthBase {
         return isValid;
     }
 
-    login() {
+    login(error) {
         if (this.validateForm()) {
             super.login().then(() => {
-                this.openNewRoute('/')
+                if (localStorage.length > 0) {
+                    this.openNewRoute('/');
+                }
             });
         }
     }

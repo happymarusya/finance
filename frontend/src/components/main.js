@@ -1,5 +1,4 @@
 import Chart from 'chart.js/auto';
-import {AuthUtils} from "../utils/auth-utils";
 
 export class Main {
 
@@ -7,7 +6,6 @@ export class Main {
         this.openNewRoute = openNewRoute;
         // console.log('Главная');
         this.init();
-        document.getElementById('profile-name').innerText = JSON.parse(AuthUtils.getAuthInfo('userInfo')).name;
     }
 
     init() {

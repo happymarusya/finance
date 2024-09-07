@@ -7,7 +7,7 @@ export class CheckAccessToken {
     }
 
     init() {
-        const accessToken = AuthUtils.getAuthInfo('accessTokenKey');
+        const accessToken = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
         if (!accessToken) {
             this.openNewRoute('/login');
         }

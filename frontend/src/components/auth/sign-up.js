@@ -47,7 +47,7 @@ export class SignUp extends AuthBase {
     async signUp() {
         this.commonErrorElement.style.display = 'none';
         if (this.validateForm()) {
-            const result = await HttpUtils.request('/signup', 'POST', {
+            const result = await HttpUtils.request('/signup', 'POST', false,{
                 name: this.nameElement.value.split(' ')[0],
                 lastName: this.nameElement.value.split(' ')[1],
                 email: this.emailElement.value,
