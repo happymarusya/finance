@@ -143,7 +143,8 @@ li svg {
 }
 
 .btn-toggle:hover,
-.btn-toggle:focus {
+.btn-toggle:focus,
+.btn-toggle-active {
     color: white;
     background-color: #0d6efd;
 }
@@ -155,9 +156,9 @@ li svg {
     border-end-end-radius: 0 !important;
 }
 
-
 .btn-toggle:hover.btn-toggle::after,
-.btn-toggle:focus.btn-toggle::after {
+.btn-toggle:focus.btn-toggle::after,
+.btn-toggle-active.btn-toggle::after {
     content: url("../static/images/arrow-white.svg");
 }
 

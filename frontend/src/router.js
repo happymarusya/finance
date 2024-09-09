@@ -211,7 +211,7 @@ export class Router {
     async activateRoute(e, oldRoute = null) {
         if (oldRoute) {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
-            // console.log(currentRoute);
+            console.log(currentRoute);
         }
 
         const urlRoute = window.location.pathname;
@@ -230,8 +230,6 @@ export class Router {
                     contentBlock = document.getElementById('content-layout');
                 }
 
-                this.activateMenuItem(newRoute);
-
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then
                 (response => response.text());
             }
@@ -240,22 +238,5 @@ export class Router {
                 newRoute.load();
             }
         }
-    }
-
-    activateMenuItem(route) {
-        const categoryMenu = document.getElementById('home-collapse');
-        const categoryButton = document.getElementById('collapsed');
-
-        let currentLink = window.location.pathname;
-        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
-            let linkHref = item.getAttribute('href');
-            if (currentLink === linkHref) {
-                item.classList.add('active');
-                if ((route.route === '/income' && window.location.pathname === '/income') || (route.route === '/expense' && window.location.pathname === '/expense')) {
-                    categoryMenu.classList.add('show');
-                    categoryButton.classList.remove('collapsed');
-                }
-            }
-        })
     }
 }
