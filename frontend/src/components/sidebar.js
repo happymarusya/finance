@@ -4,11 +4,11 @@ export class Sidebar {
 
     constructor() {
         this.links = document.querySelectorAll('.sidebar .nav-link');
-        this.init();
+        this.init().then();
         this.activateMenuItem();
     }
 
-    init() {
+    async init() {
         const userInfo = JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey));
         if (userInfo) {
             document.getElementById('profile-name').innerText = userInfo.name;
@@ -16,9 +16,10 @@ export class Sidebar {
 
         const userBalance = AuthUtils.getUserBalanceInfo();
         if (userBalance) {
-            document.getElementById('balance').innerText = userBalance;
+            const userBalanceElement = document.getElementById('balance');
+            userBalanceElement.innerText = '';
+            userBalanceElement.innerText = userBalance;
         }
-
 
         document.querySelector('.burger').addEventListener('click', function () {
             this.classList.toggle('active');

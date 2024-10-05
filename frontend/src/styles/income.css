@@ -6,6 +6,7 @@
     color: #CED4DA;
     font-size: 28px;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .table>:not(caption)>*>* {

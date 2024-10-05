@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
 module.exports = {
+
     entry: './src/app.js',
     mode: 'development',
     output: {
@@ -19,6 +20,7 @@ module.exports = {
         port: 9000,
         historyApiFallback: true,
     },
+
     module: {
         rules: [
             {
@@ -43,6 +45,7 @@ module.exports = {
                             }
                         }
                     },
+
                 ]
             }
         ]
