@@ -3,10 +3,10 @@
         <h1>Редактирование категории доходов</h1>
     </div>
     <form class="mt-4">
-        <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Зарплата"
-               aria-label="Name of expense">
-        <a href="javascript:void(0);" class="btn btn-success me-2">Сохранить</a>
-        <a href="javascript:void(0);" class="btn btn-danger">Отмена</a>
+        <input id="incomeToChange" type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Зарплата"
+               aria-label="Name of income">
+        <a href="/income/edit?id=" class="btn btn-success me-2" id="saveIncomeCategory">Сохранить</a>
+        <a href="/income" class="btn btn-danger" id="cancelChangesIncome">Отмена</a>
     </form>
 </div>
 

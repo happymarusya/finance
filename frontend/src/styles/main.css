@@ -8,6 +8,10 @@ body {
     color: #052C65;
 }
 
+.number {
+    font-weight: bold;
+}
+
 form {
     width: 400px;
 }

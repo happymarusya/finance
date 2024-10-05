@@ -1,13 +1,29 @@
-import Chart from 'chart.js/auto';
 import {HttpUtils} from "../utils/http-utils";
-import {OperationsFilters} from "./operations-filters";
+import {ShowOperationsUtils} from "../utils/show-operations-utils";
 import {ButtonsActiveUtils} from "../utils/buttons-active-utils";
 
-export class Main extends OperationsFilters {
+export class OperationsFilters {
     constructor(openNewRoute) {
-        super();
         this.openNewRoute = openNewRoute;
-        this.showOperationsToday().then();
+        this.btnToday = document.getElementById('btn-today');
+        this.btnToday.addEventListener('click', this.showOperationsToday.bind(this));
+        this.btnWeek = document.getElementById('btn-week');
+        this.btnWeek.addEventListener('click', this.showOperationsWeek.bind(this));
+        this.btnMonth = document.getElementById('btn-month');
+        this.btnMonth.addEventListener('click', this.showOperationsMonth.bind(this));
+        this.btnYear = document.getElementById('btn-year');
+        this.btnYear.addEventListener('click', this.showOperationsYear.bind(this));
+        this.btnAll = document.getElementById('btn-all');
+        this.btnAll.addEventListener('click', this.showOperationsAll.bind(this));
+        this.btnInterval = document.getElementById('btn-interval');
+        this.btnInterval.addEventListener('click', this.showOperationsInterval.bind(this));
+        this.btnFrom = document.getElementById('btn-date-from');
+        this.btnFrom.addEventListener('click', this.chooseDateFrom.bind(this));
+        this.btnTill = document.getElementById('btn-date-till');
+        this.btnTill.addEventListener('click', this.chooseDateTill.bind(this));
+        this.buttons = document.querySelectorAll('.btn-outline-secondary');
+        this.dateFromInputElement = document.getElementById('date-from');
+        this.dateTillInputElement = document.getElementById('date-till');
     }
 
     async showOperationsToday() {
@@ -21,7 +37,7 @@ export class Main extends OperationsFilters {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов за сегодня. Обращайтесь в поддержку')
         }
-        await this.showIncomeExpenseOperations(result.response);
+        ShowOperationsUtils.showRecords(result.response);
     }
 
     async showOperationsWeek() {
@@ -35,7 +51,7 @@ export class Main extends OperationsFilters {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов за неделю. Обращайтесь в поддержку')
         }
-        await this.showIncomeExpenseOperations(result.response);
+        ShowOperationsUtils.showRecords(result.response);
     }
 
     async showOperationsMonth() {
@@ -49,7 +65,7 @@ export class Main extends OperationsFilters {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов за месяц. Обращайтесь в поддержку')
         }
-        await this.showIncomeExpenseOperations(result.response);
+        ShowOperationsUtils.showRecords(result.response);
     }
 
     async showOperationsYear() {
@@ -63,7 +79,7 @@ export class Main extends OperationsFilters {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов за год. Обращайтесь в поддержку')
         }
-        await this.showIncomeExpenseOperations(result.response);
+        ShowOperationsUtils.showRecords(result.response);
     }
 
     async showOperationsAll() {
@@ -77,7 +93,7 @@ export class Main extends OperationsFilters {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов за весь период. Обращайтесь в поддержку')
         }
-        await this.showIncomeExpenseOperations(result.response);
+        ShowOperationsUtils.showRecords(result.response);
     }
 
     chooseDateFrom() {
@@ -99,106 +115,8 @@ export class Main extends OperationsFilters {
             if (result.error || !result.response || (result.response && result.response.error)) {
                 return alert('Возникла ошибка при добавлении операции расходов. Обратитесь в поддержку');
             }
-            await this.showIncomeExpenseOperations(result.response);
+            ShowOperationsUtils.showRecords(result.response);
         }
-    }
-
-    showIncomeExpenseOperations(result) {
-        this.expenseOperations = [];
-        this.incomeOperations = [];
-        for (let i = 0; i < result.length; i++) {
-            if (result[i].type === 'income') {
-                this.incomeOperations.push({
-                    'category': result[i].category,
-                    'amount': result[i].amount
-                });
-            } else {
-                this.expenseOperations.push({
-                    'category': result[i].category,
-                    'amount': result[i].amount
-                });
-            }
-        }
-
-        this.incomeOperationsResult = Object.entries(this.incomeOperations.reduce((acc, entry) => {
-            const category = entry.category;
-            if (acc[category] !== undefined) acc[category] += entry.amount;
-            else acc[category] = entry.amount;
-            return acc;
-        }, {})).map(([category, amount]) => ({category, amount }));
-        // console.log(this.incomeOperationsResult);
-
-        this.expenseOperationsResult = Object.entries(this.expenseOperations.reduce((acc, entry) => {
-            const category = entry.category;
-            if (acc[category] !== undefined) acc[category] += entry.amount;
-            else acc[category] = entry.amount;
-            return acc;
-        }, {})).map(([category, amount]) => ({category, amount }));
-        // console.log(this.expenseOperationsResult);
-
-        this.showChart();
-    }
-
-    showChart() {
-        let xValuesIncome = [];
-        let xValuesExpense = [];
-        let yValuesIncome = [];
-        let yValuesExpense = [];
-
-        for (let i = 0; i < this.incomeOperationsResult.length; i++) {
-            xValuesIncome.push(this.incomeOperationsResult[i].category);
-            yValuesIncome.push(this.incomeOperationsResult[i].amount);
-        }
-        for (let i = 0; i < this.expenseOperationsResult.length; i++) {
-            xValuesExpense.push(this.expenseOperationsResult[i].category);
-            yValuesExpense.push(this.expenseOperationsResult[i].amount);
-        }
-
-        let barColors = [
-            "#DC3545",
-            "#FD7E14",
-            "#FFC107",
-            "#20C997",
-            "#0D6EFD",
-            "#0D07DF"
-        ];
-        if (Chart.getChart("chartIncome")) {
-            Chart.getChart("chartIncome")?.destroy()
-        }
-        new Chart("chartIncome", {
-            type: "pie",
-            data: {
-                labels: xValuesIncome,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValuesIncome
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: ""
-                }
-            }
-        });
-        if (Chart.getChart("chartExpense")) {
-            Chart.getChart("chartExpense")?.destroy()
-        }
-        new Chart("chartExpense", {
-            type: "pie",
-            data: {
-                labels: xValuesExpense,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValuesExpense
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: ""
-                }
-            }
-        });
     }
 }
+

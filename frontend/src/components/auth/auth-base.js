@@ -1,5 +1,6 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {AuthUtils} from "../../utils/auth-utils";
+import {BalanceUtils} from "../../utils/balance-utils";
 
 export class AuthBase {
     constructor() {
@@ -30,15 +31,6 @@ export class AuthBase {
             name: result.response.user.name + ' ' + result.response.user.lastName
         })
 
-        this.receiveBalance().then();
-    }
-
-    async receiveBalance() {
-        const balance = await HttpUtils.request('/balance');
-        if (balance.error || !balance.response) {
-            alert('Невозможно получить данные о балансе')
-        }
-        AuthUtils.setUserBalanceInfo(balance.response.balance);
-        // console.log(balance.response.balance)
+        BalanceUtils.receiveBalance().then();
     }
 }
