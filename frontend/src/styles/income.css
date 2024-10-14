@@ -1,6 +1,18 @@
+.col-card {
+    width: 352px;
+}
+
 .card {
     color: #290661;
 }
+
+/*.card-plus {*/
+/*    width: 290px;*/
+/*}*/
+
+/*#income-category {*/
+/*    max-width: 925px;*/
+/*}*/
 
 .plus {
     color: #CED4DA;

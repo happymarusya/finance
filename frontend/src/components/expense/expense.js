@@ -32,7 +32,7 @@ export class Expense {
             // console.log(expenseId, expenseTitle);
 
             const element = document.createElement('div');
-            element.className = 'col';
+            element.className = 'col col-card';
 
             const cardElement = document.createElement('div');
             cardElement.className = 'card h-100 rounded-4';
@@ -72,10 +72,13 @@ export class Expense {
         }
         const that = this;
         const element = document.createElement('div');
-        element.className = 'col';
+        element.className = 'col col-card';
 
         const cardElement = document.createElement('div');
-        cardElement.className = 'card h-100 rounded-4 py-3';
+        cardElement.className = 'card h-100 rounded-4 py-3 cursor';
+        cardElement.onclick = function () {
+            that.addExpenseCategory();
+        }
 
         const cardBodyElement = document.createElement('div');
         cardBodyElement.className = 'card-body d-flex justify-content-center align-items-center';
@@ -83,9 +86,9 @@ export class Expense {
         const spanElement = document.createElement('span');
         spanElement.className = 'plus';
         spanElement.innerText = '+';
-        spanElement.onclick = function () {
-            that.addExpenseCategory();
-        }
+        // spanElement.onclick = function () {
+        //     that.addExpenseCategory();
+        // }
 
         cardBodyElement.appendChild(spanElement);
         cardElement.appendChild(cardBodyElement);

@@ -16,7 +16,6 @@ export class IncomeExpense {
         if (result.error || !result.response || (result.response && result.response.error)) {
             return alert('Возникла ошибка при запросе доходов и расходов. Обращайтесь в поддержку')
         }
-        // console.log(result.response);
         ShowOperationsUtils.showRecords(result.response);
     }
 }

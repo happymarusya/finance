@@ -214,7 +214,8 @@ li svg {
 }
 
 .operation-chart {
-    width: 500px;
+    /*width: 500px;*/
+    width: 40%;
 }
 
 .modal-dialog {
@@ -233,10 +234,10 @@ li svg {
         border-right: none;
     }
 
-    .diagrams {
-        flex-direction: column;
-        margin: auto;
-    }
+    /*.diagrams {*/
+    /*    flex-direction: column;*/
+    /*    margin: auto;*/
+    /*}*/
 }
 
 @media (max-width: 900px) {
@@ -275,6 +276,17 @@ li svg {
         from {opacity: 0}
         to {opacity: 1}
     }
+
+    .diagrams {
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        width: 50%;
+    }
+
+    .col-card {
+        width: 50%;
+    }
 }
 
 @media (max-width: 780px) {
@@ -286,6 +298,16 @@ li svg {
 @media (max-width: 730px) {
     .main-content-tab {
         padding: 100px 20px;
+    }
+
+    .col-card {
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    .col-card {
+        width: 100%;
     }
 }
 

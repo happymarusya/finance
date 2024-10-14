@@ -36,8 +36,8 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
-                    new Main(this.openNewRoute.bind(this));
                     new Sidebar();
+                    new Main(this.openNewRoute.bind(this));
                 }
             },
             {

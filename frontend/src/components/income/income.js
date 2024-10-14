@@ -31,7 +31,7 @@ export class Income {
             // console.log(incomeId, incomeTitle);
 
             const element = document.createElement('div');
-            element.className = 'col';
+            element.className = 'col col-card';
 
             const cardElement = document.createElement('div');
             cardElement.className = 'card h-100 rounded-4';
@@ -71,10 +71,13 @@ export class Income {
         }
         const that = this;
         const element = document.createElement('div');
-        element.className = 'col';
+        element.className = 'col col-card';
 
         const cardElement = document.createElement('div');
-        cardElement.className = 'card h-100 rounded-4 py-3';
+        cardElement.className = 'card h-100 rounded-4 py-3 cursor';
+        cardElement.onclick = function () {
+            that.addIncomeCategory();
+        }
 
         const cardBodyElement = document.createElement('div');
         cardBodyElement.className = 'card-body d-flex justify-content-center align-items-center';
@@ -82,9 +85,9 @@ export class Income {
         const spanElement = document.createElement('span');
         spanElement.className = 'plus';
         spanElement.innerText = '+';
-        spanElement.onclick = function () {
-            that.addIncomeCategory();
-        }
+        // spanElement.onclick = function () {
+        //     that.addIncomeCategory();
+        // }
 
         cardBodyElement.appendChild(spanElement);
         cardElement.appendChild(cardBodyElement);

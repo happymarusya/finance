@@ -63,10 +63,12 @@ export class EditIncomeExpense extends IncomeExpenseBase {
         } else {
             changedData.type = 'expense';
         }
-        changedData.amount = this.operationAmountElement.value;
+        changedData.amount = Number(this.operationAmountElement.value);
         changedData.date = this.operationDateElement.value;
         changedData.comment = this.operationCommentsElement.value;
-        changedData.category_id = this.operationOptionElement.options.selectedIndex;
+        const operationOption = document.getElementById('operation-category');
+        changedData.category_id = Number(operationOption.options[operationOption.selectedIndex].getAttribute('data-id'));
+
         if (this.validateForm()) {
             const result = await HttpUtils.request('/operations/' + this.operationOriginalData.id,
                 'PUT', true, changedData);

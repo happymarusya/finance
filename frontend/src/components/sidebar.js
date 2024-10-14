@@ -9,7 +9,7 @@ export class Sidebar {
     }
 
     async init() {
-        const userInfo = JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey));
+        const userInfo = await JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey));
         if (userInfo) {
             document.getElementById('profile-name').innerText = userInfo.name;
         }

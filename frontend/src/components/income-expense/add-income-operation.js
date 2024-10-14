@@ -14,14 +14,17 @@ export class AddIncomeOperation extends IncomeExpenseBase {
 
     async createIncomeOperation() {
         if (this.validateForm()) {
-            const categoryId = this.operationOptionElement.options.selectedIndex;
+            const incomeOption = document.getElementById('operation-category');
+            const categoryId = incomeOption.options[incomeOption.selectedIndex].getAttribute('data-id');
+
+            // console.log(categoryId)
 
             const result = await HttpUtils.request('/operations', 'POST', true, {
                 type: "income",
-                amount: this.operationAmountElement.value,
+                amount: Number(this.operationAmountElement.value),
                 date: this.operationDateElement.value,
                 comment: this.operationCommentsElement.value,
-                category_id: categoryId
+                category_id: Number(categoryId)
             })
             // console.log(result);
 
