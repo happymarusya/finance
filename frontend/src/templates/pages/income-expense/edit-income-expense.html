@@ -3,14 +3,8 @@
         <h1>Редактирование дохода/расхода</h1>
     </div>
     <form class="mt-4 needs-validation">
-        <div class="input-group mb-4 rounded-end">
-            <select type="text" class="form-select form-control pt-2 text-dark" aria-label="Default select example"
-                    id="operation-type" required>
-<!--                <option selected>Тип...</option>-->
-                <option value="доход">доход</option>
-                <option value="расход">расход</option>
-            </select>
-            <span id="operation-type-error" class="error invalid-feedback">Выберите тип</span>
+        <div class="input-group mb-4">
+            <input type="text" class="form-control pt-2 text-dark" aria-label="Type" id="operation-type" required>
         </div>
         <div class="input-group has-validation mb-4">
             <select type="text" class="form-select form-control pt-2 text-dark" aria-label="Default select example"

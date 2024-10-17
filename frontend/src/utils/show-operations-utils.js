@@ -4,16 +4,17 @@ export class ShowOperationsUtils {
         recordsElement.innerHTML = '';
 
         for (let i = 0; i < operations.length; i++) {
-            const data = operations[i].date;
-            const splitData = data.split("-")
-            operations[i].date = splitData[2] + '.' + splitData[1] + '.' + splitData[0];
+            if (operations[i].type === 'income' || operations[i].type === 'expense') {
+                const data = operations[i].date;
+                const splitData = data.split("-")
+                operations[i].date = splitData[2] + '.' + splitData[1] + '.' + splitData[0];
 
-            if (operations[i].type === 'income') {
-                operations[i].type = 'доход';
-            } else {
-                operations[i].type = 'расход';
+                if (operations[i].type === 'income') {
+                    operations[i].type = 'доход';
+                } else {
+                    operations[i].type = 'расход';
+                }
             }
-
             const trElement = document.createElement('tr')
 
             trElement.insertCell().innerHTML = '<div class="number">' + (i + 1) + '</div>';

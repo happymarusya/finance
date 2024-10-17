@@ -156,7 +156,13 @@ export class Router {
                     new IncomeExpense(this.openNewRoute.bind(this));
                     new Sidebar();
                     new IncomeExpenseBase(this.openNewRoute.bind(this));
-                    new OperationsFilters(this.openNewRoute.bind(this));
+                    if (document.readyState === "loading") {
+                        document.addEventListener("DOMContentLoaded", () => {
+                            new OperationsFilters(this.openNewRoute.bind(this));
+                        });
+                    } else {
+                        new OperationsFilters(this.openNewRoute.bind(this));
+                    }
                 },
             },
             {

@@ -2,7 +2,6 @@ import {UrlUtils} from "../../utils/url-utils";
 import {HttpUtils} from "../../utils/http-utils";
 import {IncomeExpenseBase} from "./income-expense-base";
 import {BalanceUtils} from "../../utils/balance-utils";
-import {AuthUtils} from "../../utils/auth-utils";
 
 export class EditIncomeExpense extends IncomeExpenseBase {
     constructor(openNewRoute) {
@@ -12,6 +11,7 @@ export class EditIncomeExpense extends IncomeExpenseBase {
         if (!id) {
             return this.openNewRoute('/income-expense');
         }
+        this.operationTypeElement.setAttribute('readonly', 'readonly');
         document.getElementById('saveOperation').addEventListener('click', this.changeOperation.bind(this));
         this.getOperation(id).then();
     }
@@ -26,7 +26,7 @@ export class EditIncomeExpense extends IncomeExpenseBase {
             return alert('Возникла ошибка при запросе операции доходов/расходов. Обратитесь в поддержку');
         }
         this.operationOriginalData = result.response;
-
+        this.operationTypeElement.setAttribute('readonly', 'readonly');
         if (result.response.type === 'expense') {
             this.operationTypeElement.value = 'расход';
             await this.getExpenseCategories();
@@ -34,18 +34,6 @@ export class EditIncomeExpense extends IncomeExpenseBase {
             this.operationTypeElement.value = 'доход';
             await this.getIncomeCategories();
         }
-        this.operationTypeElement.addEventListener('change', () => {
-            while (this.operationOptionElement.children.length > 1) {
-                this.operationOptionElement.removeChild(this.operationOptionElement.lastChild);
-            }
-            if (this.operationTypeElement.value === 'доход') {
-                AuthUtils.removeUserBalanceInfo();
-                this.getIncomeCategories().then();
-            } else {
-                AuthUtils.removeUserBalanceInfo();
-                this.getExpenseCategories().then();
-            }
-        })
         this.showOperation(result.response);
     }
 

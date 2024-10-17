@@ -10,23 +10,25 @@ export class Sidebar {
 
     async init() {
         const userInfo = await JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey));
-        if (userInfo) {
+        if (userInfo && document.getElementById('profile-name')) {
             document.getElementById('profile-name').innerText = userInfo.name;
         }
 
         const userBalance = AuthUtils.getUserBalanceInfo();
-        if (userBalance) {
+        if (userBalance && document.getElementById('balance')) {
             const userBalanceElement = document.getElementById('balance');
             userBalanceElement.innerText = '';
             userBalanceElement.innerText = userBalance;
         }
 
-        document.querySelector('.burger').addEventListener('click', function () {
-            this.classList.toggle('active');
-            document.body.classList.toggle('menu-opened');
-            document.querySelector('.sidebar').classList.toggle('open');
-            document.querySelector('.sidebar').classList.toggle('border-end-0');
-        })
+        if (document.querySelector('.burger')) {
+            document.querySelector('.burger').addEventListener('click', function () {
+                this.classList.toggle('active');
+                document.body.classList.toggle('menu-opened');
+                document.querySelector('.sidebar').classList.toggle('open');
+                document.querySelector('.sidebar').classList.toggle('border-end-0');
+            })
+        }
     }
 
     activateMenuItem() {
@@ -36,9 +38,9 @@ export class Sidebar {
         let currentLink = window.location.pathname;
         this.links.forEach(item => {
             let linkHref = item.getAttribute('href');
-            if (currentLink === linkHref) {
+            if ((currentLink.includes(linkHref) && linkHref !== '/') || (currentLink === '/' && linkHref === '/')) {
                 item.classList.add('active');
-                if (window.location.pathname === '/income' || window.location.pathname === '/expense') {
+                if ((currentLink.includes('/income') || currentLink.includes('/expense')) && !currentLink.includes('/income-expense')) {
                     categoryMenu.classList.add('show');
                     categoryButton.classList.remove('collapsed');
                     categoryButton.classList.add('btn-toggle-active');
