@@ -9,10 +9,17 @@ import {Income} from "./components/income/income.js";
 import {AddIncome} from "./components/income/add-income.js";
 import {EditIncome} from "./components/income/edit-income.js";
 import {IncomeExpense} from "./components/income-expense/income-expense.js";
-import {AddIncomeExpense} from "./components/income-expense/add-income-expense.js";
+import {AddExpenseOperation} from "./components/income-expense/add-expense-operation.js";
 import {EditIncomeExpense} from "./components/income-expense/edit-income-expense.js";
 import {Sidebar} from "./components/sidebar";
 import {CheckAccessToken} from "./services/check-access-token";
+import {DeleteIncome} from "./components/income/delete-income";
+import {DeleteExpense} from "./components/expense/delete-expense";
+import {DeleteIncomeExpense} from "./components/income-expense/delete-income-expense";
+import {AddIncomeOperation} from "./components/income-expense/add-income-operation";
+import {AuthBase} from "./components/auth/auth-base";
+import {IncomeExpenseBase} from "./components/income-expense/income-expense-base";
+import {OperationsFilters} from "./components/operations-filters";
 
 export class Router {
     constructor() {
@@ -29,27 +36,9 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
-                    new Main();
                     new Sidebar();
+                    new Main(this.openNewRoute.bind(this));
                 }
-            },
-            {
-                route: '/popup/expense/delete',
-                title: 'Удалить расходы?',
-                filePathTemplate: '/templates/pages/popup/expenseDelete-popup.html',
-                useLayout: false,
-            },
-            {
-                route: '/popup/income/delete',
-                title: 'Удалить доходы?',
-                filePathTemplate: '/templates/pages/popup/incomeDelete-popup.html',
-                useLayout: false,
-            },
-            {
-                route: '/popup/incomeExpense/delete',
-                title: 'Удалить доходы/расходы?',
-                filePathTemplate: '/templates/pages/popup/incomeExpenseDelete-popup.html',
-                useLayout: false,
             },
             {
                 route: '/login',
@@ -109,6 +98,14 @@ export class Router {
                 },
             },
             {
+                route: '/expense/delete',
+                title: 'Удалить категорию расходов',
+                load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
+                    new DeleteExpense(this.openNewRoute.bind(this));
+                },
+            },
+            {
                 route: '/income',
                 title: 'Доходы',
                 filePathTemplate: '/templates/pages/income/income.html',
@@ -142,6 +139,14 @@ export class Router {
                 },
             },
             {
+                route: '/income/delete',
+                title: 'Удалить категорию доходов',
+                load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
+                    new DeleteIncome(this.openNewRoute.bind(this));
+                },
+            },
+            {
                 route: '/income-expense',
                 title: 'Доходы/расходы',
                 filePathTemplate: '/templates/pages/income-expense/income-expense.html',
@@ -150,16 +155,35 @@ export class Router {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new IncomeExpense(this.openNewRoute.bind(this));
                     new Sidebar();
+                    new IncomeExpenseBase(this.openNewRoute.bind(this));
+                    if (document.readyState === "loading") {
+                        document.addEventListener("DOMContentLoaded", () => {
+                            new OperationsFilters(this.openNewRoute.bind(this));
+                        });
+                    } else {
+                        new OperationsFilters(this.openNewRoute.bind(this));
+                    }
                 },
             },
             {
-                route: '/income-expense/add',
-                title: 'Добавить доходы/расходы',
+                route: '/income-expense/add-income',
+                title: 'Добавить доходы',
                 filePathTemplate: '/templates/pages/income-expense/add-income-expense.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new CheckAccessToken(this.openNewRoute.bind(this));
-                    new AddIncomeExpense(this.openNewRoute.bind(this));
+                    new AddIncomeOperation(this.openNewRoute.bind(this));
+                    new Sidebar();
+                },
+            },
+            {
+                route: '/income-expense/add-expense',
+                title: 'Добавить расходы',
+                filePathTemplate: '/templates/pages/income-expense/add-income-expense.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
+                    new AddExpenseOperation(this.openNewRoute.bind(this));
                     new Sidebar();
                 },
             },
@@ -172,6 +196,14 @@ export class Router {
                     new CheckAccessToken(this.openNewRoute.bind(this));
                     new EditIncomeExpense(this.openNewRoute.bind(this));
                     new Sidebar();
+                },
+            },
+            {
+                route: '/income-expense/delete',
+                title: 'Удалить доходы/расходы',
+                load: () => {
+                    new CheckAccessToken(this.openNewRoute.bind(this));
+                    new DeleteIncomeExpense(this.openNewRoute.bind(this));
                 },
             },
         ]
