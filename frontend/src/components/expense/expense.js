@@ -1,4 +1,5 @@
 import {HttpUtils} from "../../utils/http-utils";
+import {BalanceUtils} from "../../utils/balance-utils";
 
 export class Expense {
     constructor(openNewRoute) {
@@ -10,7 +11,6 @@ export class Expense {
 
     async getExpense() {
         const result = await HttpUtils.request('/categories/expense');
-        // console.log(result.response);
         if (result.redirect) {
             return this.openNewRoute(result.redirect);
         }
@@ -22,14 +22,12 @@ export class Expense {
     }
 
     showExpense() {
-        // console.log(this.expense)
         const expenseCategory = document.getElementById('expense-category');
 
         for (let i = 0; i < this.expense.length; i++) {
             const that = this;
             let expenseId = this.expense[i].id;
             let expenseTitle = this.expense[i].title;
-            // console.log(expenseId, expenseTitle);
 
             const element = document.createElement('div');
             element.className = 'col col-card';
@@ -60,7 +58,7 @@ export class Expense {
             deleteButtonElement.setAttribute('data-bs-target', '#deleteExpense');
             deleteButtonElement.setAttribute('data-bs-toggle', 'modal');
             deleteButtonElement.onclick = function () {
-                    that.deleteExpenseCategory(expenseId);
+                that.deleteExpenseCategory(expenseTitle, expenseId);
             }
 
             cardElementBody.appendChild(cardElementTitle);
@@ -68,7 +66,9 @@ export class Expense {
             cardElementBody.appendChild(deleteButtonElement);
             cardElement.appendChild(cardElementBody);
             element.appendChild(cardElement);
-            expenseCategory.appendChild(element);
+            if (expenseCategory) {
+                expenseCategory.appendChild(element);
+            }
         }
         const that = this;
         const element = document.createElement('div');
@@ -86,15 +86,13 @@ export class Expense {
         const spanElement = document.createElement('span');
         spanElement.className = 'plus';
         spanElement.innerText = '+';
-        // spanElement.onclick = function () {
-        //     that.addExpenseCategory();
-        // }
 
         cardBodyElement.appendChild(spanElement);
         cardElement.appendChild(cardBodyElement);
         element.appendChild(cardElement);
-        expenseCategory.appendChild(element);
-
+        if (expenseCategory) {
+            expenseCategory.appendChild(element);
+        }
     }
 
     addExpenseCategory() {
@@ -105,14 +103,46 @@ export class Expense {
         this.openNewRoute('/expense/edit?id=' + id);
     }
 
-    deleteExpenseCategory(id) {
-        // console.log(id);
+    deleteExpenseCategory(title, id) {
+        document.getElementById('doNotDelete').addEventListener('click', () => {
+            document.getElementById('expense-category').innerHTML = '';
+            this.openNewRoute('/expense');
+        })
         this.btnDeleteExpense.addEventListener('click', () => {
-            document.getElementById('doNotDelete').addEventListener('click', () => {
-                window.location.reload();
-            })
-            window.location.reload();
-            this.openNewRoute('/expense/delete?id=' + id);
+            document.getElementById('expense-category').innerHTML = '';
+            this.getIncomeExpense(title, id).then();
         })
     }
+
+    async getIncomeExpense(title, id) {
+        const result = await HttpUtils.request('/operations?period=all');
+
+        if (result.redirect) {
+            return this.openNewRoute(result.redirect);
+        }
+        if (result.error || !result.response || (result.response && result.response.error)) {
+            return alert('Возникла ошибка при запросе доходов и расходов. Обращайтесь в поддержку')
+        }
+        for (let i = 0; i < result.response.length; i++) {
+            if (result.response[i].category === title) {
+                this.deleteOperation(result.response[i].id).then();
+            }
+        }
+        this.openNewRoute('/expense/delete?id=' + id);
+    }
+
+    async deleteOperation(id) {
+        const result = await HttpUtils.request('/operations/' + id, 'DELETE');
+        if (result.redirect) {
+            return this.openNewRoute(result.redirect);
+        }
+        if (result.error || !result.response || (result.response && result.response.error)) {
+            return alert('Возникла ошибка при удалении операции доходов/расходов. Обратитесь в поддержку');
+        }
+        BalanceUtils.receiveBalance().then();
+    }
 }
+
+
+
+

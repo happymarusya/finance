@@ -46,11 +46,13 @@ export class EditExpense {
                 return this.openNewRoute(result.redirect);
             }
             if (result.error || !result.response || (result.response && result.response.error)) {
-                console.log(result.response.message);
                 return alert('Возникла ошибка при редактировании категории расходов. Обратитесь в поддержку');
             }
-            window.location.reload();
-            return this.openNewRoute('/expense');
+            // window.location.reload();
+            if (document.getElementById('expense-category')) {
+                document.getElementById('expense-category').innerHTML = '';
+                return this.openNewRoute('/expense');
+            }
         }
     }
 }

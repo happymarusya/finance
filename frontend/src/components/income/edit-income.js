@@ -46,11 +46,13 @@ export class EditIncome {
                 return this.openNewRoute(result.redirect);
             }
             if (result.error || !result.response || (result.response && result.response.error)) {
-                console.log(result.response.message);
                 return alert('Возникла ошибка при редактировании категории доходов. Обратитесь в поддержку');
             }
-            window.location.reload();
-            return this.openNewRoute('/income');
+
+            if (document.getElementById('income-category')) {
+                document.getElementById('income-category').innerHTML = '';
+                return this.openNewRoute('/income');
+            }
         }
     }
 }

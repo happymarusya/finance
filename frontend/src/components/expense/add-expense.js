@@ -19,7 +19,6 @@ export class AddExpense {
             return this.openNewRoute(result.redirect);
         }
         if (result.error || !result.response || (result.response && result.response.error)) {
-            console.log(result.response.message);
             return alert('Возникла ошибка при добавлении категории расходов. Обратитесь в поддержку');
         }
         return this.openNewRoute('/expense');
