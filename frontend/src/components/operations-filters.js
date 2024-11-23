@@ -98,12 +98,22 @@ export class OperationsFilters {
 
     chooseDateFrom() {
         ButtonsActiveUtils.buttonsActive(this.buttons);
-        this.dateFrom = this.dateFromInputElement.value;
+        this.dateFromInputElement.addEventListener('change', () => {
+            this.dateFrom = this.dateFromInputElement.value;
+            // console.log(this.dateFrom)
+            this.btnFrom.innerText = this.dateFrom.split('-').reverse().join('-');
+            this.dateFromInputElement.classList.remove('show')
+        })
     }
 
     chooseDateTill() {
         ButtonsActiveUtils.buttonsActive(this.buttons);
-        this.dateTill = this.dateTillInputElement.value;
+        this.dateTillInputElement.addEventListener('change', () => {
+            this.dateTill = this.dateTillInputElement.value;
+            // console.log(this.dateTill)
+            this.btnTill.innerText = this.dateTill.split('-').reverse().join('-');
+            this.dateTillInputElement.classList.remove('show')
+        })
     }
 
     async showOperationsInterval() {
