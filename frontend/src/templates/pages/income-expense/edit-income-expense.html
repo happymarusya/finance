@@ -2,15 +2,33 @@
     <div class="content-header">
         <h1>Редактирование дохода/расхода</h1>
     </div>
-    <form class="mt-4">
-        <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Доход" aria-label="Type">
-        <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="Зарплата"
-               aria-label="Category">
-        <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="500$" aria-label="Amount">
-        <input type="text" class="form-control mb-4 pt-2 text-dark" placeholder="" value="11.09.2022" aria-label="Date">
-        <input type="text" class="form-control mb-4 pt-2 text-start-secondary" placeholder="Комментарий..."
-               aria-label="Comments">
-        <a href="javascript:void(0);" class="btn btn-success me-2">Сохранить</a>
-        <a href="javascript:void(0);" class="btn btn-danger">Отмена</a>
+    <form class="mt-4 needs-validation">
+        <div class="input-group mb-4">
+            <input type="text" class="form-control pt-2 text-dark" aria-label="Type" id="operation-type" required>
+        </div>
+        <div class="input-group has-validation mb-4">
+            <select type="text" class="form-select form-control pt-2 text-dark" aria-label="Default select example"
+                    id="operation-category" required>
+                <option selected>Категория...</option>
+            </select>
+            <span id="operation-category-error" class="error invalid-feedback">Выберите категорию</span>
+        </div>
+        <div class="input-group has-validation mb-4">
+            <input type="number" class="form-control pt-2 text-dark" placeholder="Сумма в $..." aria-label="Amount"
+                   id="operation-amount" required>
+            <span id="operation-amount-error" class="error invalid-feedback">Введите сумму</span>
+        </div>
+        <div class="input-group has-validation mb-4">
+            <input type="date" class="form-control pt-2 text-dark" placeholder="Дата..." aria-label="Date"
+                   id="operation-date" required>
+            <span id="operation-date-error" class="error invalid-feedback">Введите дату</span>
+        </div>
+        <div class="input-group mb-4">
+            <input type="text" class="form-control pt-2 text-start-secondary" placeholder="Комментарий..."
+                   aria-label="Comments" id="operation-comments" required>
+            <span id="operation-comments-error" class="error invalid-feedback">Заполните комментарий</span>
+        </div>
+        <a href="javascript:void(0);" class="btn btn-success me-2" id="saveOperation">Сохранить</a>
+        <a href="/income-expense" class="btn btn-danger" id="cancelEditOperation">Отмена</a>
     </form>
 </div>

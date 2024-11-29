@@ -28,11 +28,15 @@ export class AuthUtils {
         localStorage.removeItem(this.userBalance);
     }
 
+    static removeUserBalanceInfo() {
+        localStorage.removeItem(this.userBalance);
+    }
+
     static getAuthInfo(key = null) {
         if (key && [this.accessTokenKey, this.refreshTokenKey, this.userInfoTokenKey].includes(key)) {
             return localStorage.getItem(key);
         } else {
-            return  {
+            return {
                 [this.accessTokenKey]: localStorage.getItem(this.accessTokenKey),
                 [this.refreshTokenKey]: localStorage.getItem(this.refreshTokenKey),
                 [this.userInfoTokenKey]: localStorage.getItem(this.userInfoTokenKey),
@@ -40,9 +44,9 @@ export class AuthUtils {
         }
     }
 
-    static getUserBalanceInfo () {
+    static getUserBalanceInfo() {
         return localStorage.getItem(this.userBalance);
-}
+    }
 
     static async updateRefreshToken() {
         let result = false;

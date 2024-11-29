@@ -2,94 +2,19 @@
     <div class="content-header">
         <h1>Расходы</h1>
     </div>
-    <div class="row row-cols-1 row-cols-xs-1 row-cols-lg-2 row-cols-xl-3 g-3 mt-3">
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Еда</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
+    <div class="modal fade" id="deleteExpense" tabindex="-1" role="dialog" aria-labelledby="deleteExpenseLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <h3 class="modal-title fs-5 text-center mb-3" id="deleteExpenseLabel">Вы действительно хотите удалить категорию?</h3>
+
+                <div class="">
+                    <button type="button" class="btn btn-success me-2" id="btn-delete-expense" data-bs-dismiss="modal">Да, удалить</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="doNotDelete">Не удалять</button>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Жилье</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Здоровие</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Кафе</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Авто</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Одежда</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Развлечения</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Счета</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title">Спорт</h3>
-                    <a href="javascript:void(0);" class="btn btn-primary me-2">Редактировать</a>
-                    <a href="javascript:void(0);" class="btn btn-danger">Удалить</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-4 py-3">
-                <div class="card-body d-flex justify-content-center align-items-center">
-                    <span class="plus">+</span>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-xs-1 row-cols-lg-2 row-cols-xl-3 g-3 mt-3" id="expense-category">
+
     </div>
 </div>

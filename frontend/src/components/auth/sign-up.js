@@ -61,7 +61,7 @@ export class SignUp extends AuthBase {
             }
             console.log(result);
 
-            super.login().then(() => {
+            await super.login().then(() => {
                 this.openNewRoute('/')
             });
         }
